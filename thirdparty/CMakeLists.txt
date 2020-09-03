@@ -20,5 +20,6 @@ if (TEST)
     ExternalProject_Add(Criterion
             PREFIX Criterion
             SOURCE_DIR ${PROJECT_SOURCE_DIR}/thirdparty/Criterion
+            CMAKE_ARGS -DI18N=OFF
             INSTALL_COMMAND "")
 endif()

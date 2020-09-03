@@ -1,3 +1,4 @@
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 file(GLOB TestFiles RELATIVE ${PROJECT_SOURCE_DIR}/tests/libs *.cpp)
 foreach( source_file ${TestFiles})
     set (CMAKE_RUNTIME_OUTPUT_DIRECTORY ${PROJECT_SOURCE_DIR}/tests/libs)
@@ -5,8 +6,8 @@ foreach( source_file ${TestFiles})
     add_executable(${name} ${source_file})
     add_dependencies(${name} Criterion)
     target_include_directories(${name} PUBLIC ${CRITERION_INCLUDE})
-    target_link_directories(${name} PUBLIC ${CRITERION_LIB_DIR} ${TESTTEST})
-    target_link_libraries(${name} criterion z ${OPENMP} ${TESTTESTL})
+    target_link_directories(${name} PUBLIC ${CRITERION_LIB_DIR})
+    target_link_libraries(${name} criterion z ${OPENMP})
     add_test(
             NAME ${name}
             COMMAND sh -c "cd ${PROJECT_SOURCE_DIR}/tests/libs/ ; ./${name} ${CRITERION_VERBOSE}"
